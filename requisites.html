@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реквизиты компании - Трансагентство</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Стили для печати */
+        @media print {
+            /* Скрываем всё, кроме реквизитов */
+            body * {
+                visibility: hidden;
+            }
+            .requisites-wrapper,
+            .requisites-wrapper * {
+                visibility: visible;
+            }
+            .requisites-wrapper {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                max-width: none;
+                padding: 20px !important;
+                box-shadow: none !important;
+                background: white !important;
+                margin: 0 !important;
+                font-size: 12pt;
+            }
+            .download-container {
+                display: none !important;
+            }
+            /* Убираем разрывы страниц внутри блоков */
+            .requisites-section {
+                page-break-inside: avoid;
+            }
+            /* Делаем шрифт чуть компактнее */
+            .requisites-item {
+                padding: 2px 0 !important;
+            }
+            .requisites-label, .requisites-value {
+                font-size: 11pt !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <span class="text-primary">Трансагентство</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav">
+                    <a class="nav-link px-3" href="index.html">Главная</a>
+                    <a class="nav-link px-3" href="calculate.html">Рассчитать стоимость</a>
+                    <a class="nav-link px-3" href="news/index.html">Новости</a>
+                    <a class="nav-link px-3 active" href="requisites.html">Реквизиты</a>
+                    <a class="nav-link px-3" href="application.html">Оставить заявку</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="requisites-container">
+        <div class="requisites-wrapper">
+            <h1 class="requisites-title">Реквизиты компании</h1>
+            
+            <div class="requisites-section">
+                <h2 class="section-title">Общая информация</h2>
+                <div class="requisites-grid">
+                    <div class="requisites-item">
+                        <span class="requisites-label">Полное наименование:</span>
+                        <span class="requisites-value">Общество с ограниченной ответственностью "Трансагентство"</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">Краткое наименование:</span>
+                        <span class="requisites-value">ООО «ТрА»</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">Ген. директор:</span>
+                        <span class="requisites-value">Давлетшина Алсу Ринатовна</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">Контакты:</span>
+                        <span class="requisites-value">+7 (904) 768-70-89, tra.info@mail.ru</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="requisites-section">
+                <h2 class="section-title">Юридические данные</h2>
+                <div class="requisites-grid">
+                    <div class="requisites-item">
+                        <span class="requisites-label">ИНН:</span>
+                        <span class="requisites-value">1651092275</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">КПП:</span>
+                        <span class="requisites-value">168601001</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">ОГРН:</span>
+                        <span class="requisites-value">1221600078809</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">ОКПО:</span>
+                        <span class="requisites-value">75376496</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">Код жд:</span>
+                        <span class="requisites-value">4231</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">Код ЕЛС:</span>
+                        <span class="requisites-value">1006546099</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="requisites-section">
+                <h2 class="section-title">Адреса</h2>
+                <div class="requisites-grid">
+                    <div class="requisites-item">
+                        <span class="requisites-label">Юридический адрес:</span>
+                        <span class="requisites-value">РТ, 422772, м. р-н Пестречинский, с.п. Кощаковское, д.Званка, ул.Лазурная д.2А</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">Почтовый адрес:</span>
+                        <span class="requisites-value">РТ, 422772, м. р-н Пестречинский, с.п. Кощаковское, д.Званка, ул.Лазурная д.2А</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="requisites-section">
+                <h2 class="section-title">Банковские реквизиты (руб)</h2>
+                <div class="requisites-grid">
+                    <div class="requisites-item">
+                        <span class="requisites-label">Банк:</span>
+                        <span class="requisites-value">ФИЛИАЛ «НИЖЕГОРОДСКИЙ» АО «АЛЬФА-БАНК»</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">Р/с:</span>
+                        <span class="requisites-value">40702810629140008516</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">Корр. счёт:</span>
+                        <span class="requisites-value">30101810200000000824</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">БИК:</span>
+                        <span class="requisites-value">042202824</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="requisites-section">
+                <h2 class="section-title">Банковские реквизиты (вал)</h2>
+                <div class="requisites-grid">
+                    <div class="requisites-item">
+                        <span class="requisites-label">Банк:</span>
+                        <span class="requisites-value">ООО Банк Аверс</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">Валютный счёт:</span>
+                        <span class="requisites-value">4070216300390000051</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">Корр. счёт:</span>
+                        <span class="requisites-value">30101810500000000774</span>
+                    </div>
+                    <div class="requisites-item">
+                        <span class="requisites-label">БИК:</span>
+                        <span class="requisites-value">049205774</span>
+                    </div>
+                </div>
+            </div>
+
+    <div class="download-container">
+        <button onclick="printRequisites()" class="download-btn">
+            <i class="bi bi-printer"></i> Распечатать реквизиты
+        </button>
+    </div>
+
+    
+
+    <!-- Футер -->
+    <footer class="apple-footer">
+        <div class="container">
+            <div class="apple-nav">
+                <div class="apple-col">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="index.html">О нас</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="news/index.html">Новости</a></li>
+                        <li><a href="#">Партнеры</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="calculate.html">Рассчитать стоимость</a></li>
+                        <li><a href="application.html">Оставить заявку</a></li>
+                        <li><a href="#">Акции</a></li>
+                        <li><a href="#">Спецпредложения</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Поддержка</h3>
+                    <ul>
+                        <li><a href="#">Служба поддержки</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="#">Сообщить о проблеме</a></li>
+                        <li><a href="requisites.html">Связаться с нами</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Контакты</h3>
+                    <div class="apple-contact">
+                        <a href="tel:+79047687089"><i class="fas fa-phone"></i> +7 (904) 768-70-89</a>
+                        <a href="mailto:tra.info@mail.ru"><i class="fas fa-envelope"></i> tra.info@mail.ru</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="apple-bottom">
+                <div class="apple-legal">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                    <a href="#">Правовая информация</a>
+                </div>
+                <div class="apple-copyright">
+                    ООО «ТрА» © <span id="current-year"></span>. Все права защищены.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+
+        function printRequisites() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

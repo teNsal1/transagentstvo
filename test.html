@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тест загрузки файлов</title>
+</head>
+<body>
+    <h1>Тест доступности файлов</h1>
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        const tests = [
+            { name: 'Главная страница', path: 'index.html' },
+            { name: 'Страница новостей', path: 'news/index.html' },
+            { name: 'Файл новостей (JSON)', path: 'data/news.json' },
+            { name: 'CSS стили', path: 'css/styles.css' }
+        ];
+        
+        async function testFile(path) {
+            try {
+                const response = await fetch(path);
+                return {
+                    exists: response.ok,
+                    status: response.status,
+                    statusText: response.statusText
+                };
+            } catch (error) {
+                return {
+                    exists: false,
+                    error: error.message
+                };
+            }
+        }
+        
+        async function runTests() {
+            results.innerHTML = '<h2>Проверка файлов:</h2>';
+            
+            for (const test of tests) {
+                const result = await testFile(test.path);
+                const status = result.exists ? '✅' : '❌';
+                const details = result.exists 
+                    ? `Статус: ${result.status} ${result.statusText}`
+                    : `Ошибка: ${result.error || 'Файл не найден'}`;
+                
+                results.innerHTML += `
+                    <div style="margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                        <strong>${status} ${test.name}</strong><br>
+                        Путь: ${test.path}<br>
+                        ${details}
+                    </div>
+                `;
+            }
+        }
+        
+        runTests();
+    </script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рассчитать стоимость - Трансагентство</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .under-construction-container {
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .under-construction-content {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+        
+        .construction-icon {
+            margin-bottom: 30px;
+        }
+        
+        .loader {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+        }
+        
+        .construction-title {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .construction-text {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .construction-contact {
+            font-size: 16px;
+            color: #888;
+        }
+        
+        .construction-contact a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .construction-title {
+                font-size: 24px;
+            }
+            
+            .construction-text {
+                font-size: 16px;
+            }
+            
+            .under-construction-content {
+                padding: 25px;
+            }
+        }
+        
+        /* Стили для калькулятора */
+        .calculator-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        
+        .calculator-container h1 {
+            text-align: center;
+            color: #0b5ed7;
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .form-section h3 {
+            color: #495057;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0b5ed7;
+        }
+        
+        .form-check {
+            margin-bottom: 10px;
+        }
+        
+        .result-section {
+            background: #e7f1ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .result-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0b5ed7;
+            margin: 20px 0;
+        }
+        
+        .calculator-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-container {
+                margin: 20px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <span class="text-primary">Трансагентство</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav">
+                    <a class="nav-link px-3" href="index.html">Главная</a>
+                    <a class="nav-link px-3 active" href="calculate.html">Рассчитать стоимость</a>
+                    <a class="nav-link px-3" href="news/index.html">Новости</a>
+                    <a class="nav-link px-3" href="requisites.html">Реквизиты</a>
+                    <a class="nav-link px-3" href="application.html">Оставить заявку</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <div class="calculator-container">
+        <h1>Калькулятор стоимости перевозки</h1>
+        
+        <div class="form-section">
+            <h3>Маршрут</h3>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="from" class="form-label">Откуда:</label>
+                    <input type="text" class="form-control" id="from" placeholder="Город отправления">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="to" class="form-label">Куда:</label>
+                    <input type="text" class="form-control" id="to" placeholder="Город назначения">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="distance" class="form-label">Расстояние (км):</label>
+                    <input type="number" class="form-control" id="distance" placeholder="Пример: 500">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="cargo-type" class="form-label">Тип груза:</label>
+                    <select class="form-select" id="cargo-type">
+                        <option value="general">Общий</option>
+                        <option value="fragile">Хрупкий</option>
+                        <option value="dangerous">Опасный</option>
+                        <option value="refrigerated">Рефрижераторный</option>
+                        <option value="oversized">Крупногабаритный</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h3>Характеристики груза</h3>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="weight" class="form-label">Вес (кг):</label>
+                    <input type="number" class="form-control" id="weight" placeholder="Пример: 1000">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="volume" class="form-label">Объем (м³):</label>
+                    <input type="number" class="form-control" id="volume" placeholder="Пример: 10">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="pallet-count" class="form-label">Количество паллет:</label>
+                    <input type="number" class="form-control" id="pallet-count" placeholder="Пример: 5">
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Тип перевозки:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="transport-type" id="road" value="road" checked>
+                    <label class="form-check-label" for="road">Автомобильная</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="transport-type" id="railway" value="railway">
+                    <label class="form-check-label" for="railway">Железнодорожная</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="transport-type" id="multimodal" value="multimodal">
+                    <label class="form-check-label" for="multimodal">Мультимодальная</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h3>Дополнительные услуги</h3>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="insurance" value="insurance">
+                <label class="form-check-label" for="insurance">Страхование груза (+5%)</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="loading" value="loading">
+                <label class="form-check-label" for="loading">Погрузо-разгрузочные работы (+10%)</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="storage" value="storage">
+                <label class="form-check-label" for="storage">Хранение на терминале (+15%)</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="express" value="express">
+                <label class="form-check-label" for="express">Экспресс-доставка (+20%)</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="customs" value="customs">
+                <label class="form-check-label" for="customs">Таможенное оформление (+25%)</label>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <h3>Примерная стоимость:</h3>
+            <div class="result-value" id="result">0 ₽</div>
+            <p class="text-muted">* Цена является ориентировочной. Для получения точного расчета свяжитесь с нами.</p>
+            <button class="btn btn-primary calculator-btn" onclick="calculatePrice()">Рассчитать стоимость</button>
+            <a href="application.html" class="btn btn-outline-primary calculator-btn">Оставить заявку</a>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="apple-footer">
+        <div class="container">
+            <div class="apple-nav">
+                <div class="apple-col">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="index.html">О нас</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="news/index.html">Новости</a></li>
+                        <li><a href="#">Партнеры</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="calculate.html">Рассчитать стоимость</a></li>
+                        <li><a href="application.html">Оставить заявку</a></li>
+                        <li><a href="#">Акции</a></li>
+                        <li><a href="#">Спецпредложения</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Поддержка</h3>
+                    <ul>
+                        <li><a href="#">Служба поддержки</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="#">Сообщить о проблеме</a></li>
+                        <li><a href="requisites.html">Связаться с нами</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Контакты</h3>
+                    <div class="apple-contact">
+                        <a href="tel:+79047687089"><i class="fas fa-phone"></i> +7 (904) 768-70-89</a>
+                        <a href="mailto:tra.info@mail.ru"><i class="fas fa-envelope"></i> tra.info@mail.ru</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="apple-bottom">
+                <div class="apple-legal">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                    <a href="#">Правовая информация</a>
+                </div>
+                <div class="apple-copyright">
+                    ООО «ТрА» © <span id="current-year"></span>. Все права защищены.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Установка текущего года
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Автозаполнение расстояния при вводе городов
+            const fromInput = document.getElementById('from');
+            const toInput = document.getElementById('to');
+            const distanceInput = document.getElementById('distance');
+            
+            function updateDistance() {
+                const from = fromInput.value.toLowerCase();
+                const to = toInput.value.toLowerCase();
+                
+                // Примерные расстояния между городами
+                const distances = {
+                    'казань-москва': 800,
+                    'москва-казань': 800,
+                    'казань-санкт-петербург': 1500,
+                    'санкт-петербург-казань': 1500,
+                    'казань-екатеринбург': 1000,
+                    'екатеринбург-казань': 1000,
+                    'казань-нижний новгород': 400,
+                    'нижний новгород-казань': 400,
+                    'казань-самара': 350,
+                    'самара-казань': 350,
+                    'казань-уфа': 500,
+                    'уфа-казань': 500
+                };
+                
+                const key = `${from}-${to}`;
+                if (distances[key]) {
+                    distanceInput.value = distances[key];
+                } else if (from && to) {
+                    distanceInput.value = 500; // Значение по умолчанию
+                }
+            }
+            
+            fromInput.addEventListener('change', updateDistance);
+            toInput.addEventListener('change', updateDistance);
+        });
+        
+        function calculatePrice() {
+            // Получаем значения
+            const distance = parseFloat(document.getElementById('distance').value) || 0;
+            const weight = parseFloat(document.getElementById('weight').value) || 0;
+            const volume = parseFloat(document.getElementById('volume').value) || 0;
+            const pallets = parseFloat(document.getElementById('pallet-count').value) || 0;
+            const cargoType = document.getElementById('cargo-type').value;
+            const transportType = document.querySelector('input[name="transport-type"]:checked').value;
+            
+            // Базовые тарифы
+            let basePrice = 0;
+            
+            if (distance > 0) {
+                // Базовый расчет: стоимость за км в зависимости от типа перевозки
+                const kmRate = transportType === 'road' ? 35 : 
+                              transportType === 'railway' ? 25 : 30;
+                basePrice = distance * kmRate;
+                
+                // Учет веса
+                if (weight > 0) {
+                    basePrice += weight * 0.5; // 0.5 руб за кг
+                }
+                
+                // Учет объема
+                if (volume > 0) {
+                    basePrice += volume * 1000; // 1000 руб за м³
+                }
+                
+                // Учет паллет
+                if (pallets > 0) {
+                    basePrice += pallets * 500; // 500 руб за паллет
+                }
+                
+                // Коэффициенты типа груза
+                const cargoMultipliers = {
+                    'general': 1.0,
+                    'fragile': 1.3,
+                    'dangerous': 1.5,
+                    'refrigerated': 1.4,
+                    'oversized': 1.6
+                };
+                
+                basePrice *= cargoMultipliers[cargoType] || 1.0;
+            }
+            
+            // Дополнительные услуги
+            const insurance = document.getElementById('insurance').checked;
+            const loading = document.getElementById('loading').checked;
+            const storage = document.getElementById('storage').checked;
+            const express = document.getElementById('express').checked;
+            const customs = document.getElementById('customs').checked;
+            
+            if (insurance) basePrice *= 1.05;
+            if (loading) basePrice *= 1.10;
+            if (storage) basePrice *= 1.15;
+            if (express) basePrice *= 1.20;
+            if (customs) basePrice *= 1.25;
+            
+            // Округление
+            const finalPrice = Math.round(basePrice);
+            
+            // Отображение результата
+            document.getElementById('result').textContent = finalPrice.toLocaleString('ru-RU') + ' ₽';
+            
+            // Анимация
+            const resultElement = document.getElementById('result');
+            resultElement.style.transform = 'scale(1.1)';
+            resultElement.style.transition = 'transform 0.3s';
+            setTimeout(() => {
+                resultElement.style.transform = 'scale(1)';
+            }, 300);
+        }
+        
+        // Инициализация калькулятора
+        calculatePrice();
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Проверка путей</title>
+</head>
+<body>
+    <h1>Проверка доступности файлов</h1>
+    <div id="results"></div>
+    
+    <script>
+        const tests = [
+            { name: 'Главная страница', url: 'index.html' },
+            { name: 'Страница новостей', url: 'news/index.html' },
+            { name: 'Файл новостей JSON', url: 'data/news.json' },
+            { name: 'CSS стили', url: 'css/styles.css' },
+            { name: 'Изображение фона', url: 'img/truck-bg.jpg' }
+        ];
+        
+        async function checkFile(url) {
+            try {
+                const response = await fetch(url);
+                return {
+                    ok: response.ok,
+                    status: response.status,
+                    statusText: response.statusText
+                };
+            } catch (error) {
+                return {
+                    ok: false,
+                    error: error.message
+                };
+            }
+        }
+        
+        async function runTests() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<h2>Результаты:</h2>';
+            
+            for (const test of tests) {
+                const result = await checkFile(test.url);
+                const icon = result.ok ? '✅' : '❌';
+                const status = result.ok 
+                    ? `OK (${result.status})`
+                    : `Ошибка: ${result.error || result.statusText || 'Не найден'}`;
+                
+                resultsDiv.innerHTML += `
+                    <div style="margin: 10px; padding: 10px; border: 1px solid #ccc; background: ${result.ok ? '#e8f5e8' : '#ffe8e8'}">
+                        <strong>${icon} ${test.name}</strong><br>
+                        <small>${test.url}</small><br>
+                        ${status}
+                    </div>
+                `;
+            }
+        }
+        
+        runTests();
+    </script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оставить заявку - Трансагентство</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(11, 94, 215, 0.08);
+            width: 100%;
+            max-width: 500px;
+            margin: 40px auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .form-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(11, 94, 215, 0.12);
+        }
+        h1 {
+            text-align: center;
+            color: #0b5ed7;
+            margin-bottom: 30px;
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        .form-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        input, select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        input:focus, select:focus {
+            border-color: #0b5ed7;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(11, 94, 215, 0.15);
+        }
+        select {
+            appearance: none;
+            background: white url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 16px center;
+            background-size: 18px;
+        }
+        select:focus {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b5ed7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        }
+        button {
+            width: 100%;
+            padding: 16px;
+            background: #0b5ed7;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        button:hover {
+            background: #0a4eb8;
+            transform: translateY(-1px);
+        }
+        button svg {
+            width: 18px;
+            height: 18px;
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            text-align: center;
+        }
+        .text-danger {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <span class="text-primary">Трансагентство</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav">
+                    <a class="nav-link px-3" href="index.html">Главная</a>
+                    <a class="nav-link px-3" href="calculate.html">Рассчитать стоимость</a>
+                    <a class="nav-link px-3" href="news/index.html">Новости</a>
+                    <a class="nav-link px-3" href="requisites.html">Реквизиты</a>
+                    <a class="nav-link px-3 active" href="application.html">Оставить заявку</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Форма заявки -->
+    <div class="form-container">
+        <h1>Оставить заявку</h1>
+        
+        <div id="success-message" class="success-message">
+            Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
+        </div>
+        
+        <form id="application-form" method="post">
+            <div class="form-group">
+                <label for="name">Имя *</label>
+                <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                <div class="text-danger" id="name-error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+                <div class="text-danger" id="email-error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Номер телефона *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__">
+                <div class="text-danger" id="phone-error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="service">Выберите услугу *</label>
+                <select id="service" name="service" required>
+                    <option value="">Выберите услугу</option>
+                    <option value="container_reception">Прием груженых и порожних контейнеров</option>
+                    <option value="documents_clearance">Раскредитовка документов на станции</option>
+                    <option value="container_delivery">Доставка контейнеров автотранспортом</option>
+                    <option value="loading_unloading">Организация погрузки-выгрузки</option>
+                    <option value="container_storage">Хранение контейнеров на терминале</option>
+                    <option value="container_shipping">Отправка контейнеров по России/экспорт</option>
+                    <option value="shipping_docs">Оформление перевозочных документов</option>
+                    <option value="cargo_insurance">Страхование грузов</option>
+                </select>
+                <div class="text-danger" id="service-error"></div>
+            </div>
+            
+            <button type="submit" id="submit-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 2L11 13"></path>
+                    <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+                </svg>
+                Отправить заявку
+            </button>
+        </form>
+    </div>
+
+    <!-- Футер -->
+    <footer class="apple-footer">
+        <div class="container">
+            <div class="apple-nav">
+                <div class="apple-col">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="index.html">О нас</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="news/index.html">Новости</a></li>
+                        <li><a href="#">Партнеры</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="calculate.html">Рассчитать стоимость</a></li>
+                        <li><a href="application.html">Оставить заявку</a></li>
+                        <li><a href="#">Акции</a></li>
+                        <li><a href="#">Спецпредложения</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Поддержка</h3>
+                    <ul>
+                        <li><a href="#">Служба поддержки</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="#">Сообщить о проблеме</a></li>
+                        <li><a href="requisites.html">Связаться с нами</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Контакты</h3>
+                    <div class="apple-contact">
+                        <a href="tel:+79047687089"><i class="fas fa-phone"></i> +7 (904) 768-70-89</a>
+                        <a href="mailto:tra.info@mail.ru"><i class="fas fa-envelope"></i> tra.info@mail.ru</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="apple-bottom">
+                <div class="apple-legal">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                    <a href="#">Правовая информация</a>
+                </div>
+                <div class="apple-copyright">
+                    ООО «ТрА» © <span id="current-year"></span>. Все права защищены.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Установка текущего года
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Маска для телефона
+            const phoneInput = document.getElementById('phone');
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 0) {
+                    if (value.length <= 3) {
+                        value = '+7 (' + value;
+                    } else if (value.length <= 6) {
+                        value = '+7 (' + value.substring(0, 3) + ') ' + value.substring(3);
+                    } else if (value.length <= 8) {
+                        value = '+7 (' + value.substring(0, 3) + ') ' + value.substring(3, 6) + '-' + value.substring(6);
+                    } else {
+                        value = '+7 (' + value.substring(0, 3) + ') ' + value.substring(3, 6) + '-' + value.substring(6, 8) + '-' + value.substring(8, 10);
+                    }
+                }
+                e.target.value = value;
+            });
+            
+            // Обработка формы
+            const form = document.getElementById('application-form');
+            const successMessage = document.getElementById('success-message');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Сброс ошибок
+                document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
+                
+                // Валидация
+                let isValid = true;
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const service = document.getElementById('service').value;
+                
+                if (!name) {
+                    document.getElementById('name-error').textContent = 'Введите имя';
+                    isValid = false;
+                }
+                
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    document.getElementById('email-error').textContent = 'Введите корректный email';
+                    isValid = false;
+                }
+                
+                if (!phone || phone.replace(/\D/g, '').length < 10) {
+                    document.getElementById('phone-error').textContent = 'Введите корректный номер телефона';
+                    isValid = false;
+                }
+                
+                if (!service) {
+                    document.getElementById('service-error').textContent = 'Выберите услугу';
+                    isValid = false;
+                }
+                
+                if (!isValid) return;
+                
+                // Отправка формы
+                const submitBtn = document.getElementById('submit-btn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Отправка...';
+                submitBtn.disabled = true;
+                
+                // Здесь будет реальная отправка на сервер
+                // Временно имитируем отправку
+                setTimeout(() => {
+                    // В реальном проекте здесь будет fetch запрос
+                    console.log('Отправка данных:', { name, email, phone, service });
+                    
+                    // Показываем сообщение об успехе
+                    successMessage.style.display = 'block';
+                    form.reset();
+                    
+                    // Возвращаем кнопку в исходное состояние
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Прячем сообщение через 5 секунд
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

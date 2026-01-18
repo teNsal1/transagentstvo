@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расширение автопарка компании - Трансагентство</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .article-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .article-header {
+            margin-bottom: 30px;
+        }
+        
+        .article-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 20px;
+        }
+        
+        .article-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            color: #636e72;
+            flex-wrap: wrap;
+        }
+        
+        .article-category {
+            background: #74b9ff;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        .article-image {
+            margin: 30px 0;
+        }
+        
+        .article-image img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .article-content {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #2d3436;
+            font-weight: 400;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+        
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-button {
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .article-container {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+            
+            .article-title {
+                font-size: 1.8em;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .article-content {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <span class="text-primary">Трансагентство</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav">
+                    <a class="nav-link px-3" href="../index.html">Главная</a>
+                    <a class="nav-link px-3" href="../calculate.html">Рассчитать стоимость</a>
+                    <a class="nav-link px-3 active" href="index.html">Новости</a>
+                    <a class="nav-link px-3" href="../requisites.html">Реквизиты</a>
+                    <a class="nav-link px-3" href="../application.html">Оставить заявку</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Детальная страница новости -->
+    <div class="article-container">
+        <div class="back-button">
+            <a href="index.html" class="btn btn-outline-primary">
+                ← Назад к списку новостей
+            </a>
+        </div>
+        
+        <article class="article-content">
+            <header class="article-header">
+                <h1 class="article-title">Расширение автопарка компании</h1>
+                
+                <div class="article-meta">
+                    <span class="article-category">Новость</span>
+                    <span class="article-date">Опубликовано: 15.01.2024 10:30</span>
+                </div>
+                
+                <div class="article-image">
+                    <img src="../img/news/truck-news.jpg" alt="Новые грузовики компании">
+                </div>
+            </header>
+
+            <div class="article-body">
+                <p>Мы рады сообщить о значительном расширении нашего автопарка. В этом месяце компания приобрела 10 новых грузовых автомобилей марки Volvo FH, которые соответствуют современным экологическим стандартам Euro-6.</p>
+                
+                <p>Этот шаг позволит нам:</p>
+                
+                <ul>
+                    <li>Увеличить объем перевозок на 30%</li>
+                    <li>Сократить сроки доставки</li>
+                    <li>Предлагать более конкурентные цены</li>
+                    <li>Обеспечивать повышенную безопасность грузов</li>
+                </ul>
+                
+                <p>Новые автомобили оснащены системой мониторинга в реальном времени, что позволяет нашим клиентам отслеживать местоположение груза 24/7.</p>
+                
+                <p>Мы продолжаем инвестировать в развитие нашей инфраструктуры и технологий, чтобы предоставлять нашим клиентам наилучший сервис. Все новые автомобили прошли технический осмотр и готовы к работе.</p>
+                
+                <p>С обновленным автопарком мы сможем обслуживать больше маршрутов и принимать заказы на более сложные логистические задачи. Мы благодарим наших клиентов за доверие и обещаем продолжать развиваться для вашего удобства.</p>
+            </div>
+        </article>
+    </div>
+
+    <!-- Футер -->
+    <footer class="apple-footer mt-5">
+        <div class="container">
+            <div class="apple-nav">
+                <div class="apple-col">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="../index.html">О нас</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="index.html">Новости</a></li>
+                        <li><a href="#">Партнеры</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="../calculate.html">Рассчитать стоимость</a></li>
+                        <li><a href="../application.html">Оставить заявку</a></li>
+                        <li><a href="#">Акции</a></li>
+                        <li><a href="#">Спецпредложения</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Поддержка</h3>
+                    <ul>
+                        <li><a href="#">Служба поддержки</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="#">Сообщить о проблеме</a></li>
+                        <li><a href="../requisites.html">Связаться с нами</a></li>
+                    </ul>
+                </div>
+                <div class="apple-col">
+                    <h3>Контакты</h3>
+                    <div class="apple-contact">
+                        <a href="tel:+79047687089"><i class="fas fa-phone"></i> +7 (904) 768-70-89</a>
+                        <a href="mailto:tra.info@mail.ru"><i class="fas fa-envelope"></i> tra.info@mail.ru</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="apple-bottom">
+                <div class="apple-legal">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                    <a href="#">Правовая информация</a>
+                </div>
+                <div class="apple-copyright">
+                    ООО «ТрА» © <span id="current-year"></span>. Все права защищены.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
